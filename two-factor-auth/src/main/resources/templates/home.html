@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Two-factor Authentication - Secured page</title>
+    <title>2FA Demo - Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'"/>
-<p>This page is secured!</p>
+<h1>Two-factor Authentication demo - Welcome!</h1>
+<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
 </body>
 </html>

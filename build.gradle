@@ -19,8 +19,11 @@ subprojects {
             junit           : '4.12',
             spring          : '4.3.7.RELEASE',
             spring_boot     : '1.5.2.RELEASE',
+            spring_data_jpa : '1.11.1.RELEASE',
             spring_security : '4.2.2.RELEASE',
+            aspectj         : '1.8.10',
             h2              : '1.4.191',
+            hibernate       : '5.2.10.Final',
             lombok          : '1.16.8',
             commons_lang3   : '3.0',
             guava           : '19.0',
@@ -35,10 +38,14 @@ subprojects {
         compile 'org.springframework:spring-beans:' + versions.spring
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf:' + versions.spring_boot
         compile 'org.springframework.boot:spring-boot-starter-devtools:' + versions.spring_boot
+        compile 'org.springframework.data:spring-data-jpa:' + versions.spring_data_jpa
+        compile 'org.springframework.security:spring-security-config:' + versions.spring_security
         compile 'org.springframework.security:spring-security-web:' + versions.spring_security
         testCompile 'org.springframework:spring-test:' + versions.spring
 
-        testCompile 'com.h2database:h2:' + versions.h2
+        compile 'org.aspectj:aspectjweaver:' + versions.aspectj
+        runtime 'com.h2database:h2:' + versions.h2
+        compile 'org.hibernate:hibernate-entitymanager:' + versions.hibernate
         compile 'org.projectlombok:lombok:' + versions.lombok
         compile 'org.apache.commons:commons-lang3:' + versions.commons_lang3
         compile 'com.google.guava:guava:' + versions.guava

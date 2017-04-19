@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>2FA Demo - Secured page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+<form method="post" th:action="@{/signup}" th:object="${signupForm}" th:fragment="signupForm">
+    <fieldset>
+        <legend>Sign Up</legend>
+
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Email address" th:field="*{email}"/>
+            <span class="error-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid email</span>
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}"/>
+            <span class="error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid password</span>
+        </p>
+        <p>
+            <input name="signup" type="submit" value="Sign Up" />
+        </p>
+    </fieldset>
+</form>
+<p>Already have an account? <a th:href="@{/login}">Sign In</a></p>
+</body>
+</html>
