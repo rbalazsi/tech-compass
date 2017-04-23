@@ -7,7 +7,11 @@
 <body>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout" />
+    <input type="submit" value="Logout"/>
 </form>
+<div th:switch="${twoFactorEnabled}">
+    <p th:case="true">Two-factor authentication Enabled. <a th:href="@{/2faconf.html}">Disable it.</a></p>
+    <p th:case="false">Two-factor authentication Disabled. <a th:href="@{/2faconf.html}">Enable it.</a></p>
+</div>
 </body>
 </html>

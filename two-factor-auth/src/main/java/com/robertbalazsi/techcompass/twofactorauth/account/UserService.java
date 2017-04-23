@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -20,6 +21,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,6 +38,12 @@ public class UserService implements UserDetailsService {
     public void signin(Account account) {
         Authentication authentication = new UsernamePasswordAuthenticationToken(account.getEmail(), account.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+
+    public Account signup(String email, String password) {
+        String encodedPass = passwordEncoder.encode(password);
+        Account account = new Account(email, encodedPass);
+        return accountRepository.save(account);
     }
 
     private User createUser(Account account) {
