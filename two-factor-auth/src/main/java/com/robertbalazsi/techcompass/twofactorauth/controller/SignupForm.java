@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.twofactorauth.controller.signup;
+package com.robertbalazsi.techcompass.twofactorauth.controller;
 
 
 import lombok.Getter;

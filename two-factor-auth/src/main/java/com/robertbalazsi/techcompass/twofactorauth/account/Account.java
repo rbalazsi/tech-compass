@@ -22,8 +22,15 @@ public class Account implements Serializable {
 
     @Getter
     @Setter
-    //TODO: store it encrpyted, not as plain text!
     private String password;
+
+    @Getter
+    @Setter
+    private boolean twoFactorEnabled;
+
+    @Getter
+    @Setter
+    private String twoFactorSecret;
 
     protected Account() {
         // needed for JPA

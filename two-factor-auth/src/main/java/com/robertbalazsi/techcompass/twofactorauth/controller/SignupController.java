@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.twofactorauth.controller.signup;
+package com.robertbalazsi.techcompass.twofactorauth.controller;
 
 import com.robertbalazsi.techcompass.twofactorauth.account.Account;
 import com.robertbalazsi.techcompass.twofactorauth.account.AccountRepository;
@@ -18,9 +18,6 @@ import javax.validation.Valid;
 public class SignupController {
 
     @Autowired
-    private AccountRepository accountRepository;
-
-    @Autowired
     private UserService userService;
 
     @RequestMapping("/signup")
@@ -30,14 +27,13 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signup(@Valid @ModelAttribute SignupForm form, Errors errors, RedirectAttributes ra) {
+    public String doSignup(@Valid @ModelAttribute SignupForm form, Errors errors) {
         if (errors.hasErrors()) {
             return "signup";
         }
 
-        Account account = new Account(form.getEmail(), form.getPassword());
-        accountRepository.save(account);
-        userService.signin(account);
+        Account newAccount = userService.signup(form.getEmail(), form.getPassword());
+        userService.signin(newAccount);
 
         return "redirect:/hello";
     }
