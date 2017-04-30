@@ -1,0 +1,6 @@
+numbers,expectedSum
+null,0
+<EMPTY>,0
+1,1
+2;3,5
+-5;17;0;3,15
