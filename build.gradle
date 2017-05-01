@@ -12,7 +12,9 @@ ext.versions = [
         commons_lang3   : '3.0',
         guava           : '19.0',
         validation_api  : '1.1.0.Final',
-        commons_csv     : '1.4'
+        commons_csv     : '1.4',
+        commons_io      : '2.5',
+        poi             :  '3.16'
 ]
 
 subprojects {
@@ -50,6 +52,7 @@ subprojects {
         runtime 'com.h2database:h2:' + versions.h2
         compile 'org.hibernate:hibernate-entitymanager:' + versions.hibernate
         compile 'org.projectlombok:lombok:' + versions.lombok
+        compile 'commons-io:commons-io:' + versions.commons_io
         compile 'org.apache.commons:commons-lang3:' + versions.commons_lang3
         compile 'com.google.guava:guava:' + versions.guava
         compile 'javax.validation:validation-api:' + versions.validation_api
@@ -57,9 +60,11 @@ subprojects {
     }
 }
 
-project(':testng-csv') {
+project(':data-driven-testng') {
     dependencies {
         compile 'org.testng:testng:' + versions.testng
         compile 'org.apache.commons:commons-csv:' + versions.commons_csv
+        compile 'org.apache.poi:poi:' + versions.poi
+        compile 'org.apache.poi:poi-ooxml:' + versions.poi
     }
 }

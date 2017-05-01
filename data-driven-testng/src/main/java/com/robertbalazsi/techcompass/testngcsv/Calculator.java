@@ -1,6 +1,6 @@
 package com.robertbalazsi.techcompass.testngcsv;
 
-import java.util.stream.IntStream;
+import java.util.stream.DoubleStream;
 
 /**
  * The subject class, a simple calculator that can perform several types of arithmetic operations having exactly two operands.
@@ -26,11 +26,11 @@ public class Calculator {
         }
     }
 
-    public static int arraySum(int[] numbers) {
+    public static double arraySum(double[] numbers) {
         if (numbers == null || numbers.length == 0) {
             return 0;
         }
 
-        return IntStream.of(numbers).sum();
+        return DoubleStream.of(numbers).sum();
     }
 }

@@ -1,2 +1,1 @@
-1. TestNG - Investigate a CSV-based data provider solution by using IAnnotationTransformer
- - instead of @Test(dataProvider="myDataProvider"), go with something like: @DataProviderCSV("csvURL")
+(nothing new so far)
