@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.testngcsv;
+package com.robertbalazsi.techcompass.datadriven.testng;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;

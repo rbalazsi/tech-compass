@@ -1,9 +1,5 @@
-package com.robertbalazsi.techcompass.testngcsv;
+package com.robertbalazsi.techcompass.datadriven.testng;
 
-import com.robertbalazsi.techcompass.testngcsv.framework.CSVDataSource;
-import com.robertbalazsi.techcompass.testngcsv.framework.DataSourceConverters;
-import com.robertbalazsi.techcompass.testngcsv.framework.ExcelDataSource;
-import com.robertbalazsi.techcompass.testngcsv.framework.ExcelFormat;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

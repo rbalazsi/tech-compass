@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.testngcsv;
+package com.robertbalazsi.techcompass.datadriven.testng;
 
 import org.testng.annotations.DataProvider;
 

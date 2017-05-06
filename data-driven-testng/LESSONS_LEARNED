@@ -1,0 +1,14 @@
+* TestNG's injection capabilities
+ - Since TestNG can automatically inject the test Method as one of the @DataProvider's parameters, this allows runtime discovery of
+its annotations (in order to define the resource file with it) and its parameters (in order to map them as columns in the resource).
+ - More info: http://testng.org/doc/documentation-main.html#dependency-injection
+
+* CSV parsing in Java
+Use Apache Commons CSV
+
+* Excel parsing in Java
+Use Apache POI
+ - Artifact 'org.apache.poi:poi' for the old XLS format
+ - Artifact 'org.apache.poi:poi-ooxml' for the new XLSX format
+ - POI has the common abstractions Workbook, Sheet, Row and Cell, making the underlying formats transparent
+ - Workbook has two key implementations: XSSFWorkbook for XLSX and HSSFWorkbook for XLS
