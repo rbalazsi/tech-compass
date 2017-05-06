@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.testngcsv.framework;
+package com.robertbalazsi.techcompass.testngcsv;
 
 /**
  * The format of an Excel document: XLSX or the old XLS.

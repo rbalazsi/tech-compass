@@ -1,4 +1,4 @@
-package com.robertbalazsi.techcompass.testngcsv.framework;
+package com.robertbalazsi.techcompass.testngcsv;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
