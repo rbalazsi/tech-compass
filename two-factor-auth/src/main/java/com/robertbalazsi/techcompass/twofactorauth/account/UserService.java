@@ -35,6 +35,16 @@ public class UserService implements UserDetailsService {
         return createUser(account);
     }
 
+    public Account getCurrentAccount() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        return accountRepository.findByEmail(email);
+    }
+
+    public void updateAccount(Account account) {
+        accountRepository.save(account);
+    }
+
     public void signin(Account account) {
         Authentication authentication = new UsernamePasswordAuthenticationToken(account.getEmail(), account.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);

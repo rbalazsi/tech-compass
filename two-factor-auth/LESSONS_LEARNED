@@ -6,3 +6,9 @@ http://stackoverflow.com/questions/41107/how-to-generate-a-random-alpha-numeric-
 
 * [TO REMOVE] For configuring Spring Security:
 http://www.baeldung.com/spring-security-login
+
+* Do not use ServletContext#getRealPath(..) for storing files. They would be lost when redeploying the application because
+they are not part of the WAR.
+ - define and use an uploads/ directory outside the app's directory
+ - for serving static content outside the app's context, write a FileServlet that takes an InputStream and writes its to
+   the OutputStream of the response, see: http://stackoverflow.com/questions/1812244/simplest-way-to-serve-static-data-from-outside-the-application-server-in-a-java

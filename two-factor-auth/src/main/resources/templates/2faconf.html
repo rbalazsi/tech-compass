@@ -5,6 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-
+<p>Scan the barcode using Google Authenticator:</p>
+<div>
+   <img th:src="${qrPath}" alt="qrCode" />
+</div>
+<p>... or enter it manually:</p>
+<div>
+    <b><span th:text="${base32Secret}" /></b>
+</div>
 </body>
 </html>

@@ -10,11 +10,13 @@ ext.versions = [
         hibernate       : '5.2.10.Final',
         lombok          : '1.16.8',
         commons_lang3   : '3.0',
+        commons_codec   : '1.10',
         guava           : '19.0',
         validation_api  : '1.1.0.Final',
         commons_csv     : '1.4',
         commons_io      : '2.5',
-        poi             :  '3.16'
+        poi             : '3.16',
+        zxing           : '3.3.0'
 ]
 
 subprojects {
@@ -42,7 +44,7 @@ subprojects {
         compile 'org.springframework:spring-context:' + versions.spring
         compile 'org.springframework:spring-beans:' + versions.spring
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf:' + versions.spring_boot
-        /*compile 'org.springframework.boot:spring-boot-starter-devtools:' + versions.spring_boot*/
+        compile 'org.springframework.boot:spring-boot-starter-devtools:' + versions.spring_boot
         compile 'org.springframework.data:spring-data-jpa:' + versions.spring_data_jpa
         compile 'org.springframework.security:spring-security-config:' + versions.spring_security
         compile 'org.springframework.security:spring-security-web:' + versions.spring_security
@@ -53,6 +55,7 @@ subprojects {
         compile 'org.hibernate:hibernate-entitymanager:' + versions.hibernate
         compile 'org.projectlombok:lombok:' + versions.lombok
         compile 'commons-io:commons-io:' + versions.commons_io
+        compile 'commons-codec:commons-codec:' + versions.commons_codec
         compile 'org.apache.commons:commons-lang3:' + versions.commons_lang3
         compile 'com.google.guava:guava:' + versions.guava
         compile 'javax.validation:validation-api:' + versions.validation_api
@@ -66,5 +69,11 @@ project(':data-driven-testng') {
         compile 'org.apache.commons:commons-csv:' + versions.commons_csv
         compile 'org.apache.poi:poi:' + versions.poi
         compile 'org.apache.poi:poi-ooxml:' + versions.poi
+    }
+}
+
+project(':two-factor-auth') {
+    dependencies {
+        compile 'com.google.zxing:javase:' + versions.zxing
     }
 }
