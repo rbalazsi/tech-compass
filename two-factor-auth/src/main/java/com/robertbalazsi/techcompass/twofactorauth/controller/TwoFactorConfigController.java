@@ -27,17 +27,20 @@ public class TwoFactorConfigController {
 
     @RequestMapping("/2faconf")
     public String twoFactorConfig(Model model) {
-        String secret = twoFactorService.generateBase32SecretKey();
         Account account = userService.getCurrentAccount();
-        account.setTwoFactorEnabled(true);
-        account.setTwoFactorSecret(secret);
-        userService.updateAccount(account);
+        String secret;
+        if (account.isTwoFactorEnabled()) {
+            secret = account.getTwoFactorSecret();
+        } else {
+            secret = twoFactorService.generateBase32SecretKey();
+            account.setTwoFactorEnabled(true);
+            account.setTwoFactorSecret(secret);
+            userService.updateAccount(account);
 
-//        String qrPath = servletContext.getRealPath("/" + QRCODES_BASEDIR + secret + ".png");
-        String qrFile = secret + ".png";
-        twoFactorService.generateQRCodePNG(secret, account.getEmail(), QRCODES_BASEDIR + "/" + qrFile, 400, 400);
+            twoFactorService.generateQRCodePNG(secret, account.getEmail(), QRCODES_BASEDIR + "/" + secret + ".png", 400, 400);
+        }
 
-        model.addAttribute("qrPath", "/files/" + qrFile);
+        model.addAttribute("qrPath", "/files/" + secret + ".png");
         model.addAttribute("base32Secret", secret);
 
         return "2faconf";

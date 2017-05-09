@@ -27,14 +27,16 @@ public class TwoFactorService {
     private static final String UTF_8 = "UTF-8";
 
     private SecureRandom random = new SecureRandom();
+    private Base32 base32 = new Base32();
 
     public String generateBase32SecretKey() {
-        return new BigInteger(130, random).toString(32);
+        byte[] bytes = new byte[20];
+        random.nextBytes(bytes);
+        return base32.encodeToString(bytes);
     }
 
     public String getNextTOTP(String secret) {
         String normalizedSecret = secret.toUpperCase();
-        Base32 base32 = new Base32();
         byte[] decodedBytes = base32.decode(normalizedSecret);
         long time = (System.currentTimeMillis() / 1000) / DEFAULT_TOTP_INTERVAL_SECS;
         return TOTP.generateTOTP(Hex.encodeHexString(decodedBytes), Long.toHexString(time), "6");
