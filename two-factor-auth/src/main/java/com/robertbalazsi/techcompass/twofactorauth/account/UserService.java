@@ -3,6 +3,7 @@ package com.robertbalazsi.techcompass.twofactorauth.account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -12,11 +13,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
 
+    private static final String ROLE_PRE_AUTH_USER = "ROLE_PRE_AUTH_USER";
     private static final String ROLE_USER = "ROLE_USER";
 
     @Autowired
@@ -57,6 +61,11 @@ public class UserService implements UserDetailsService {
     }
 
     private User createUser(Account account) {
-        return new User(account.getEmail(), account.getPassword(), Collections.singleton(new SimpleGrantedAuthority(ROLE_USER)));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(ROLE_PRE_AUTH_USER));
+        if (!account.isTwoFactorEnabled()) {
+            authorities.add(new SimpleGrantedAuthority(ROLE_USER));
+        }
+        return new User(account.getEmail(), account.getPassword(), authorities);
     }
 }

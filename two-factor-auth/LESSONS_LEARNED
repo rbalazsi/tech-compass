@@ -12,3 +12,7 @@ they are not part of the WAR.
  - define and use an uploads/ directory outside the app's directory
  - for serving static content outside the app's context, write a FileServlet that takes an InputStream and writes its to
    the OutputStream of the response, see: http://stackoverflow.com/questions/1812244/simplest-way-to-serve-static-data-from-outside-the-application-server-in-a-java
+
+* Custom initialization code using Spring Boot
+Just implement ApplicationRunner with your custom initialization code and make it visible, e.g. with @Component. Spring will
+run it finishes initializing the context and just before SpringBootApplication#run completes.

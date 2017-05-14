@@ -13,5 +13,8 @@
 <div>
     <b><span th:text="${base32Secret}" /></b>
 </div>
+<form name="form" th:action="@{/2faconf}" method="post">
+    <p><input name="ok" type="submit" value="OK" /></p>
+</form>
 </body>
 </html>

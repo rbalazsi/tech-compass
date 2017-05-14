@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>2FA Demo - Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Login</h1>
+<div th:if="${param.error}">
+    Two-factor validation failed.
+</div>
+<form role="form" th:action="@{/validate}" method="post">
+    <p>
+        <label for="code">Code:</label>
+        <input type="text" id="code" name="code" value=""/>
+    </p>
+    <p>
+        <input name="login" type="submit" value="Submit" />
+    </p>
+</form>
+</body>
+</html>
