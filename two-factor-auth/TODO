@@ -1,0 +1,11 @@
+* Enable 2FA only after testing it with a phone
+ - Input QR code field, check if they match, do not enable it if they don't
+
+* Generate 3 single-use codes to the user, so they can unblock their account if losing their phone
+ - send them out in a secure email
+ - they can be used anytime (but only once) instead of a dynamically generated code
+
+* Support regenerating QR-code / secret so users can recreate their Google Authenticator accounts
+ - test with 2 phones to see whether the old account is automatically invalidated (good) or updated (BAD)
+
+* Style the forms so they look nicer

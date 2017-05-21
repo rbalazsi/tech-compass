@@ -5,16 +5,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p>Scan the barcode using Google Authenticator:</p>
-<div>
-   <img th:src="${qrPath}" alt="qrCode" />
+<!-- TODO: wrap form tag here, add 6-digit validation textbox only when enabling 2FA -->
+<div th:switch="${twoFactorEnabled}">
+    <div th:case="false">
+        <p>Scan the barcode using Google Authenticator:</p>
+        <div>
+            <img th:src="${qrPath}" alt="qrCode"/>
+        </div>
+        <p>... or enter it manually:</p>
+        <div>
+            <b><span th:text="${base32Secret}"/></b>
+        </div>
+    </div>
+    <div th:case="true">
+        <p>Are you sure you want to disable 2-factor authentication?</p>
+    </div>
 </div>
-<p>... or enter it manually:</p>
-<div>
-    <b><span th:text="${base32Secret}" /></b>
-</div>
-<form name="form" th:action="@{/2faconf}" method="post">
-    <p><input name="ok" type="submit" value="OK" /></p>
+<form name="form" th:action="@{/2faconf/action}" method="post">
+    <!--TODO: add verification text field if enabling 2FA -->
+    <!--<p>Enter the 6-digit code to verify (refreshes every 30 seconds):</p>-->
+
+    <button name="action" type="submit" value="ok">OK</button>
+    <button name="action" type="submit" value="cancel">Cancel</button>
 </form>
 </body>
 </html>
