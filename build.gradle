@@ -44,7 +44,7 @@ subprojects {
         compile 'org.springframework:spring-context:' + versions.spring
         compile 'org.springframework:spring-beans:' + versions.spring
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf:' + versions.spring_boot
-        compile 'org.springframework.boot:spring-boot-starter-devtools:' + versions.spring_boot
+        compile 'org.springframework.boot:spring-boot-devtools:' + versions.spring_boot
         compile 'org.springframework.data:spring-data-jpa:' + versions.spring_data_jpa
         compile 'org.springframework.security:spring-security-config:' + versions.spring_security
         compile 'org.springframework.security:spring-security-web:' + versions.spring_security
